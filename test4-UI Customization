@@ -1,0 +1,43 @@
+class CButton extends SWidget
+{
+  final String text;
+  final Color buttonColor;
+  final Color textColor;
+  final Icon? icon;
+  final onPressed;
+
+  CButton(
+      {this.text,
+      this.buttonColor,
+      this.textColor,
+      this.icon,
+      this.onPressed}) 
+{
+    text = text ?? "Button";  
+    buttonColor = Colors.green;  
+    textColor = Colors.white;  
+  }
+  Widget build(BuildContext context)
+{
+    return ElevatedButton(
+      onPressed: onPressed,  
+      style: ElevatedButton.styleFrom(
+        primary: buttonColor,  
+        onPrimary: textColor,  
+      ),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: <Widget>[
+          if (icon != null) icon,  
+          SizedBox(width: icon != null ? 8.0 : 0.0),
+          Text(
+            text,  
+            style: TextStyle(
+              fontSize: 16.0,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+        ],
+      ),
+    );
+  }
