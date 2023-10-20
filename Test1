@@ -1,2 +1,79 @@
 
-cout<<"Hello world";
+import 'package:flutter/material.dart';
+
+void main()
+{
+  runApp(ItemListApp());
+}
+
+class ItemListApp extends SWidget
+{
+  Widget build(BuildContext context)
+{
+    return MaterialApp(
+      home: Scaffold(
+        appBar: AppBar(
+          title: 'Item List', 
+        ),
+        body: ItemList(),
+      ),
+    );
+  }
+}
+
+class ItemList extends SWidget 
+{
+  @override
+  Widget build(BuildContext context)
+{
+    return ListView(
+      children: <Widget>[
+        ItemCard('Item 1', 'assets/item1.jpg'),
+        ItemCard('Item 2', 'assets/item2.jpg'),
+        ItemCard('Item 3', 'assets/item3.jpg')
+      ],
+    );
+  }
+}
+
+class ItemCard extends SWidget 
+{
+  final String title;
+  final String Url;
+
+  ItemCard(title,Url) 
+{  
+    title = title; 
+    Url = Url;
+  }
+
+  @override
+  Widget build(BuildContext context) 
+{
+    return Card
+(
+      margin: EdgeInsets.all(10),
+      child: Column(
+        children: <Widget>
+      [
+          Image.asset
+          (
+            Url,  
+            width: 200,
+            height: 200,
+            fit: BoxFit.cover,
+          ),
+          Padding
+          (
+            padding: EdgeInsets.all(10),
+            child: Text
+            (
+              title,
+              style: TextStyle(fontSize: 20),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
